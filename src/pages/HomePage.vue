@@ -14,20 +14,23 @@ export default {
 
     data() {
         return {
-            projects: [
-                // list: [],
-                // pagination: [],
-            ],
+            projects: {
+                list: [],
+                pagination: [],
+            },
         };
     },
 
     methods: {
-        fetchProjects() {
+        fetchProjects(endpoint = null) {
 
+            if (!endpoint) endpoint = 'http://127.0.0.1:8002/api/projects';
             axios
-                .get('http://127.0.0.1:8002/api/projects')
+                .get(endpoint)
                 .then((response) => {
-                    this.projects = response.data;
+                    this.projects.list = response.data.data;
+                    this.projects.pagination = response.data.links;
+
                     console.log(response.data);
                 })
         },
@@ -42,7 +45,7 @@ export default {
 <template>
     <div class="container mt-5">
         <!-- Mi chiamo le props mandate dal figlio Lista dei progetti -->
-        <ProjectList :projects="projects" />
+        <ProjectList :projects="projects.list" :pagination="projects.pagination" @changePage="fetchProjects" />
     </div>
 </template>
 

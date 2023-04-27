@@ -1,9 +1,9 @@
 <script>
 export default {
-    name: "AppHeader",
+    name: "ProjectCard",
 
     props: {
-        // Definisco le props che dovrà ricevere dal gentiore LISTA PROGETTI
+        // Definisco le props che dovrà ricevere dal genitore LISTA PROGETTI
         project: Object,
     }
 };
@@ -20,7 +20,7 @@ export default {
             <ul class="list-group list-group-flush">
                 <li>{{ project.type.label }}</li>
                 <li>
-                    <span v-for="technology in project.technologies" v-html="technology.label + ' '"></span>
+                    <span v-for="technology in project.technologies" v-html="technology.label"></span>
                 </li>
                 <li class="list-group-item">{{ project.created_at }}</li>
             </ul>

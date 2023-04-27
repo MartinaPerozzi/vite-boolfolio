@@ -16,6 +16,7 @@ export default {
 
   data() {
     return {
+      title: "Boolfolio",
       // projects: [
       //   // list: [],
       //   // pagination: [],
@@ -42,7 +43,8 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
+  <!-- Prop del titolo per header -->
+  <AppHeader :title="title" />
   <div class="container mt-5">
     <!-- Mi chiamo le props mandate dal figlio Lista dei progetti -->
     <!-- <ProjectList :projects="projects" /> spostato tutto in HomePage-->

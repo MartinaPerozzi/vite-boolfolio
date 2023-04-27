@@ -12,7 +12,7 @@ export default {
 <template>
     <div class="col">
         <div class="card" style="width: 18rem;">
-            <img :src="project.image" class="card-img-top" alt="...">
+            <img :src="project.image" class="card-img-top" :alt="project.title">
             <div class="card-body">
                 <h5 class="card-title">{{ project.title }}</h5>
                 <p class="card-text">{{ project.text }}</p>

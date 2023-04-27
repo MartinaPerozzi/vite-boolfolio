@@ -7,23 +7,41 @@ export default {
 
     data() {
         return {
-            projects: [
-                // list: [],
-                // pagination: [],
-            ],
+            projects: {
+                list: [],
+                pages: [],
+            },
         };
     },
 
     // Definisco la props per ricevere l'info dal padre APP
     props: {
         projects: Array,
-        pagination: Array,
+        pages: Array,
     },
 
     components: {
         ProjectCard, AppPagination
     },
-    emits: ['changePage']
+    emits: ['changePage'],
+
+    methods: {
+        fetchProjects(endpoint = null) {
+
+            if (!endpoint) endpoint = 'http://127.0.0.1:8002/api/projects';
+            axios
+                .get(endpoint)
+                .then((response) => {
+                    this.projects.list = response.data.data;
+                    this.projects.pages = response.data.links;
+
+                    console.log(response.data);
+                })
+        },
+    },
+    created() {
+        this.fetchProjects();
+    },
 
 };
 </script>
@@ -38,15 +56,10 @@ export default {
     </div>
     <!-- paginazione -->
     <div class="mt-auto pagination-custom" v-if="projects.length">
-        <nav aria-label="Page Navigation">
-            <ul class="pagination">
-                <li class="page-item" v-for="page in pagination">
-                    <button type="button" class="page-link" v-on:click="$emit('changePage', page.url)"
-                        v-bind:class="{ disabled: !page.url, active: page.active }" v-html="page.label"></button>
-                </li>
-            </ul>
-        </nav>
+
+        <AppPagination :pages="pages" @changePage="fetchProjects" />
     </div>
+    <!-- <AppPagination :pages="pages" @changePage="fetchProjects" /> -->
 </template>
 
 <style lang="scss" scoped></style>

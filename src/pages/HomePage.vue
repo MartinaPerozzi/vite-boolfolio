@@ -1,7 +1,7 @@
 <script>
+import axios from "axios";
 // COMPONENTS
 import ProjectList from '../components/ProjectList.vue';
-import axios from "axios";
 
 
 // EXPORT
@@ -10,13 +10,13 @@ export default {
         ProjectList,
     },
 
-    // emits: ["changePage"],
+    emits: ["changePage"],
 
     data() {
         return {
             projects: {
                 list: [],
-                pagination: [],
+                pages: [],
             },
         };
     },
@@ -29,7 +29,7 @@ export default {
                 .get(endpoint)
                 .then((response) => {
                     this.projects.list = response.data.data;
-                    this.projects.pagination = response.data.links;
+                    this.projects.pages = response.data.links;
 
                     console.log(response.data);
                 })
@@ -45,7 +45,7 @@ export default {
 <template>
     <div class="container mt-5">
         <!-- Mi chiamo le props mandate dal figlio Lista dei progetti -->
-        <ProjectList :projects="projects.list" :pagination="projects.pagination" @changePage="fetchProjects" />
+        <ProjectList :projects="projects.list" :pages="projects.pages" @changePage="fetchProjects" />
     </div>
 </template>
 

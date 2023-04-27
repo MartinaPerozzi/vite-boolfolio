@@ -13,10 +13,6 @@ export default {
     <div class="col">
         <div class="card" style="width: 18rem;">
             <img :src="project.image" class="card-img-top" :alt="project.title">
-            <div class="card-body">
-                <h5 class="card-title">{{ project.title }}</h5>
-                <p class="card-text">{{ project.text }}</p>
-            </div>
             <ul class="list-group list-group-flush">
                 <li>{{ project.type.label }}</li>
                 <li>
@@ -24,6 +20,10 @@ export default {
                 </li>
                 <li class="list-group-item">{{ project.created_at }}</li>
             </ul>
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.text }}</p>
+            </div>
             <div class="card-body">
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
@@ -37,7 +37,17 @@ export default {
     img {
         max-height: 300px;
         object-fit: cover;
-
     }
+
+    li {
+        list-style-type: none;
+        margin-left: 1rem;
+    }
+
+    margin-bottom: 2rem;
+}
+
+.card-body {
+    min-height: 112px;
 }
 </style>

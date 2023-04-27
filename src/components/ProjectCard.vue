@@ -32,4 +32,12 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+    img {
+        max-height: 300px;
+        object-fit: cover;
+
+    }
+}
+</style>

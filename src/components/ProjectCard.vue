@@ -27,6 +27,10 @@ export default {
             <div class="card-body">
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
+                <router-link class="btn btn-primary btn-sm"
+                    :to="{ name: 'project-detail', params: { slug: project.slug } }">
+                    Scopri
+                </router-link>
             </div>
         </div>
     </div>

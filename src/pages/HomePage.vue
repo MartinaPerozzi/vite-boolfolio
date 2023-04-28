@@ -9,35 +9,6 @@ export default {
     components: {
         ProjectList,
     },
-
-    // emits: ["changePage"],
-
-    // data() {
-    //     return {
-    //         projects: {
-    //             list: [],
-    //             pages: [],
-    //         },
-    //     };
-    // },
-
-    // methods: {
-    //     fetchProjects(endpoint = null) {
-
-    //         if (!endpoint) endpoint = 'http://127.0.0.1:8002/api/projects';
-    //         axios
-    //             .get(endpoint)
-    //             .then((response) => {
-    //                 this.projects.list = response.data.data;
-    //                 this.projects.pages = response.data.links;
-
-    //                 console.log(response.data);
-    //             })
-    //     },
-    // },
-    // created() {
-    //     this.fetchProjects();
-    // },
 };
 
 </script>

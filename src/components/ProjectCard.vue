@@ -5,13 +5,14 @@ export default {
     props: {
         // Definisco le props che dovrà ricevere dal genitore LISTA PROGETTI
         project: Object,
+        isDetail: Boolean,
     }
 };
 </script>
 
 <template>
     <div class="col">
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <img :src="project.image" class="card-img-top" :alt="project.title">
             <ul class="list-group list-group-flush">
                 <li>{{ project.type.label }}</li>
@@ -26,8 +27,7 @@ export default {
             </div>
             <div class="card-body">
                 <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-                <router-link class="btn btn-primary btn-sm"
+                <router-link v-if="!isDetail" class="btn btn-primary btn-sm"
                     :to="{ name: 'project-detail', params: { slug: project.slug } }">
                     Scopri
                 </router-link>

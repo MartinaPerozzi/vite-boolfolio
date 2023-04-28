@@ -15,8 +15,9 @@ export default {
 
 <template>
     <div class="container mt-5">
+        <h2>Homepage</h2>
         <!-- Mi chiamo le props mandate dal figlio Lista dei progetti -->
-        <ProjectList @changePage="fetchProjects" />
+        <!-- <ProjectList @changePage="fetchProjects" /> -->
     </div>
 </template>
 

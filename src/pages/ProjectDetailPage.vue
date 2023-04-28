@@ -29,7 +29,10 @@ export default {
 <template>
     <section class="container py-4">
         <h1>Dettaglio {{ project?.title }}</h1>
-        <ProjectCard v-if="project" :project="project" />
+        <div class="row">
+            <!-- Stampa la post card solo se c'è -->
+            <ProjectCard v-if="project" :project="project" :isDetail="true" />
+        </div>
 
     </section>
 </template>

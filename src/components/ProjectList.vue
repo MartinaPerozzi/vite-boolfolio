@@ -48,8 +48,8 @@ export default {
 <template>
     <!-- Stampo i progetti. Ricorda la key è necessaria. E qui mi chiamo le props che mi manda il figlio Card. -->
     <div class="mb-4">
-        <div v-if="projects.list.length" class="row row-cols-3">
-            <ProjectCard v-for="project in projects.list" :key="project.id" :project="project" />
+        <div v-if="projects.list.length" class="row row-cols-4">
+            <ProjectCard v-for="project in projects.list" :key="project.id" :project="project" :isDetail="false" />
         </div>
         <h2 v-else class="text-muted">No Projects found</h2>
     </div>

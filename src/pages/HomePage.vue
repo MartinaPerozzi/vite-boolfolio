@@ -10,34 +10,34 @@ export default {
         ProjectList,
     },
 
-    emits: ["changePage"],
+    // emits: ["changePage"],
 
-    data() {
-        return {
-            projects: {
-                list: [],
-                pages: [],
-            },
-        };
-    },
+    // data() {
+    //     return {
+    //         projects: {
+    //             list: [],
+    //             pages: [],
+    //         },
+    //     };
+    // },
 
-    methods: {
-        fetchProjects(endpoint = null) {
+    // methods: {
+    //     fetchProjects(endpoint = null) {
 
-            if (!endpoint) endpoint = 'http://127.0.0.1:8002/api/projects';
-            axios
-                .get(endpoint)
-                .then((response) => {
-                    this.projects.list = response.data.data;
-                    this.projects.pages = response.data.links;
+    //         if (!endpoint) endpoint = 'http://127.0.0.1:8002/api/projects';
+    //         axios
+    //             .get(endpoint)
+    //             .then((response) => {
+    //                 this.projects.list = response.data.data;
+    //                 this.projects.pages = response.data.links;
 
-                    console.log(response.data);
-                })
-        },
-    },
-    created() {
-        this.fetchProjects();
-    },
+    //                 console.log(response.data);
+    //             })
+    //     },
+    // },
+    // created() {
+    //     this.fetchProjects();
+    // },
 };
 
 </script>
@@ -45,7 +45,7 @@ export default {
 <template>
     <div class="container mt-5">
         <!-- Mi chiamo le props mandate dal figlio Lista dei progetti -->
-        <ProjectList :projects="projects.list" :pages="projects.pages" @changePage="fetchProjects" />
+        <ProjectList @changePage="fetchProjects" />
     </div>
 </template>
 

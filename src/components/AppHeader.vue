@@ -24,6 +24,7 @@ export default {
                 <div class="navbar-nav">
                     <router-link :to="{ name: 'home' }" class="nav-link">Homepage</router-link>
                     <router-link :to="{ name: 'contacts' }" class="nav-link">Contacts</router-link>
+                    <router-link :to="{ name: 'projects' }" class="nav-link">Projects</router-link>
                 </div>
             </div>
         </div>

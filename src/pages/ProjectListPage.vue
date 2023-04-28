@@ -1,11 +1,17 @@
 <script>
-export default {};
+// COMPONENTS
+import ProjectList from "../components/ProjectList.vue";
+
+export default {
+    name: "ProjectListPage",
+    components: {
+        ProjectList,
+    },
+};
 </script>
 
 <template>
-    <section class="container py-4">
-        <h1>Contatti</h1>
-    </section>
+    <ProjectList></ProjectList>
 </template>
 
 <style lang="scss" scoped></style>

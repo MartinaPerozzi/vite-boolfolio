@@ -3,6 +3,8 @@ import axios from "axios";
 // Importare la card
 import ProjectCard from './ProjectCard.vue';
 import AppPagination from './AppPagination.vue';
+
+
 export default {
 
     data() {
@@ -13,7 +15,6 @@ export default {
             },
         };
     },
-
     // Definisco la props per ricevere l'info dal padre APP
     props: {
         projects: Array,

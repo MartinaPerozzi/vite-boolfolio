@@ -20,29 +20,12 @@ export default {
         projects: Array,
         pages: Array,
     },
+    emits: ["changePage"],
 
     components: {
         ProjectCard, AppPagination
     },
-    emits: ['changePage'],
 
-    methods: {
-        fetchProjects(endpoint = null) {
-
-            if (!endpoint) endpoint = 'http://127.0.0.1:8002/api/projects';
-            axios
-                .get(endpoint)
-                .then((response) => {
-                    this.projects.list = response.data.data;
-                    this.projects.pages = response.data.links;
-
-                    console.log(response.data);
-                })
-        },
-    },
-    created() {
-        this.fetchProjects();
-    },
 
 };
 </script>
@@ -57,7 +40,6 @@ export default {
     </div>
     <!-- paginazione -->
     <div class="mt-auto pagination-custom" v-if="projects.length">
-
         <AppPagination :pages="pages" @changePage="fetchProjects" />
     </div>
     <!-- <AppPagination :pages="pages" @changePage="fetchProjects" /> -->

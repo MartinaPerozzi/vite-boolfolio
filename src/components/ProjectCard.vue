@@ -15,21 +15,31 @@ export default {
         <div class="card">
             <img :src="project.image" class="card-img-top" :alt="project.title">
             <ul class="list-group list-group-flush">
-                <li>{{ project.type.label }}</li>
-                <li>
-                    <span v-for="technology in project.technologies" v-html="technology.label"></span>
+                <li class="mt-3 ms-3"><span v-if="project.type" class="badge p-2"
+                        :style="{ backgroundColor: project.type.color }">{{
+                            project.type.label }}</span>
+                    <hr>
                 </li>
-                <li class="list-group-item">{{ project.created_at }}</li>
+                <li class="mt-3">
+                    <!-- Badge prendi il colore dall'API- ciclo per le tecnologie -->
+                    <span v-if="project.technologies.length" class="rounded-pill p-2 ms-3"
+                        v-for="technology in project.technologies" :key="technology.id" v-html="technology.label"
+                        :style="{ backgroundColor: technology.color }"></span>
+                    <hr>
+                </li>
+                <li class="list-group-item mt-3">{{ project.created_at }}</li>
             </ul>
             <div class="card-body">
                 <h5 class="card-title">{{ project.title }}</h5>
                 <p class="card-text">{{ project.text }}</p>
             </div>
             <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
                 <router-link v-if="!isDetail" class="btn btn-primary btn-sm"
                     :to="{ name: 'project-detail', params: { slug: project.slug } }">
                     Scopri
+                </router-link>
+                <router-link v-if="isDetail" class="btn btn-primary btn-sm" :to="{ name: 'projects' }">
+                    Go Back
                 </router-link>
             </div>
         </div>
@@ -45,7 +55,7 @@ export default {
 
     li {
         list-style-type: none;
-        margin-left: 1rem;
+        margin-left: 0rem;
     }
 
     margin-bottom: 2rem;

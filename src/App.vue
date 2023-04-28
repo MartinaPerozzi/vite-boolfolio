@@ -46,10 +46,9 @@ export default {
   <!-- Prop del titolo per header -->
   <AppHeader :title="title" />
   <div class="container mt-5">
-    <!-- Mi chiamo le props mandate dal figlio Lista dei progetti -->
     <!-- <ProjectList :projects="projects" /> spostato tutto in HomePage-->
     <router-view></router-view>
   </div>
 </template>
 
-<style scoped></style>
+<style></style>

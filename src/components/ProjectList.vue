@@ -3,7 +3,7 @@ import axios from "axios";
 // Importare la card
 import ProjectCard from './ProjectCard.vue';
 import AppPagination from './AppPagination.vue';
-import AppLoader from './AppLoader.vue';
+// import AppLoader from './AppLoader.vue';
 
 
 export default {
@@ -26,7 +26,7 @@ export default {
     emits: ["changePage"],
 
     components: {
-        ProjectCard, AppPagination, AppLoader
+        ProjectCard, AppPagination,
     },
     methods: {
         fetchProjects(endpoint = null) {

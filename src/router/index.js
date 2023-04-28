@@ -5,6 +5,7 @@ import Contacts from '../pages/Contacts.vue';
 import ProjectListPage from '../pages/ProjectListPage.vue';
 import ProjectDetailPage from '../pages/ProjectDetailPage.vue';
 import NotFoundPage from '../pages/NotFoundPage.vue';
+import TypeProjectPage from '../pages/TypeProjectPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -31,6 +32,12 @@ const router = createRouter({
             path: '/contacts',
             name: 'contacts',
             component: Contacts
+            ,
+        },
+        {
+            path: '/type/:type_id/projects',
+            name: 'type_projects',
+            component: TypeProjectPage
             ,
         },
         // Ogni rotta che non corrisponde a quelle da me definite porta alla 404

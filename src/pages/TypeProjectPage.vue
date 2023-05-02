@@ -10,7 +10,7 @@ export default {
 
 <template>
     <section class="container py-4">
-        <ProjectList typeOfPage="by_type" />
+        <ProjectList typeOfRequest="by_type" />
     </section>
 </template>
 

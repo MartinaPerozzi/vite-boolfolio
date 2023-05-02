@@ -21,7 +21,7 @@ export default {
     },
     // Definisco la props per ricevere l'info dal padre APP
     props: {
-        typeOfPage: String,
+        typeOfRequest: String,
     },
     emits: ["changePage"],
 
@@ -58,15 +58,15 @@ export default {
     // Computed per le tipologie
     computed: {
         title() {
-            if (this.typeOfPage == 'most_recent') return 'Progetti';
-            if (this.typeOfPage == 'by_type') return this.type ? 'Projects of' + ' ' + this.type.label : 'Types';
+            if (this.typeOfRequest == 'most_recent') return 'Progetti';
+            if (this.typeOfRequest == 'by_type') return this.type ? 'Projects of' + ' ' + this.type.label : 'Types';
             return 'Lista Progetti';
         },
 
         baseEndpoint() {
-            if (this.typeOfPage == "most_recent")
+            if (this.typeOfRequest == "most_recent")
                 return "http://127.0.0.1:8002/api/projects";
-            if (this.typeOfPage == "by_type")
+            if (this.typeOfRequest == "by_type")
                 return `http://127.0.0.1:8002/api/type/${this.$route.params.type_id}/projects`;
             return "http://127.0.0.1:8002/api/projects";
         },

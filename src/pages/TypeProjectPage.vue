@@ -10,8 +10,7 @@ export default {
 
 <template>
     <section class="container py-4">
-        <h1>Types</h1>
-        <ProjectList />
+        <ProjectList type="by_type" />
     </section>
 </template>
 

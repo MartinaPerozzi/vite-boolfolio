@@ -16,18 +16,18 @@ export default {
             <img :src="project.image" class="card-img-top" :alt="project.title">
             <ul class="list-group list-group-flush">
 
-                <li class="mt-3 ms-3"><span v-if="project.type" class="badge p-2"
+                <!-- <li class="mt-3 ms-3"><span v-if="project.type" class="badge p-2"
                         :style="{ backgroundColor: project.type.color }">{{
                             project.type.label }}</span>
                     <hr>
-                </li>
+                </li> -->
 
-                <!-- <li class="mt-3 ms-3"><router-link v-if="project.type" class="badge p-2"
-                        :to="{ name: 'type_projects', params: { type_id: type.type_id } }"
+                <li class="mt-2 ms-2"><router-link v-if="project.type" class="dinamic-bdg badge p-2"
+                        :to="{ name: 'type_projects', params: { 'type_id': project.type_id } }"
                         :style="{ backgroundColor: project.type.color }">{{
                             project.type.label }}</router-link>
-                    <hr>
-                </li> -->
+                </li>
+                <hr>
 
                 <li class="mt-3">
                     <!-- Badge prendi il colore dall'API- ciclo per le tecnologie -->
@@ -65,6 +65,15 @@ export default {
     li {
         list-style-type: none;
         margin-left: 0rem;
+    }
+
+    .dinamic-bdg {
+        text-decoration: none;
+
+        &:hover {
+            color: rgb(255, 251, 240);
+
+        }
     }
 
     margin-bottom: 2rem;

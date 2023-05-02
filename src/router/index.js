@@ -37,9 +37,9 @@ const router = createRouter({
         {
             path: '/type/:type_id/projects',
             name: 'type_projects',
-            component: TypeProjectPage
-            ,
+            component: TypeProjectPage,
         },
+
         // Ogni rotta che non corrisponde a quelle da me definite porta alla 404
         {
             path: '/:pathMatch(.*)*',

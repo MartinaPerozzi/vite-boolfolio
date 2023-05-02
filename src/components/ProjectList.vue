@@ -16,13 +16,12 @@ export default {
                 list: [],
                 pages: [],
             },
+            type: null,
         };
     },
     // Definisco la props per ricevere l'info dal padre APP
     props: {
-        // projects: Array,
-        // pages: Array,
-        type: String,
+        typeOfPage: String,
     },
     emits: ["changePage"],
 
@@ -33,12 +32,16 @@ export default {
         fetchProjects(endpoint = null) {
             this.isLoading = true;
 
-            if (!endpoint) endpoint = 'http://127.0.0.1:8002/api/projects';
+            if (!endpoint) endpoint = this.baseEndpoint;
+            // Il tipo di endpoint dipende dal tipo di lista- vedi type.
             axios
                 .get(endpoint)
                 .then((response) => {
-                    this.projects.list = response.data.data;
-                    this.projects.pages = response.data.links;
+                    // Aggiungo un livello .projects perchè me lo sto passando con compact 
+                    this.projects.list = response.data.projects.data;
+                    this.projects.pages = response.data.projects.links;
+
+                    if (response.data.type) this.type = response.data.type;
 
                     console.log(response.data);
                 })
@@ -48,28 +51,30 @@ export default {
                 })
                 .finally(() => {
                     this.isLoading = false;
-                })
+                });
 
         },
-    },
-    created() {
-        this.fetchProjects();
     },
     // Computed per le tipologie
     computed: {
         title() {
-            if (this.type == 'most_recent') return 'Progetti';
-            if (this.type == 'by_type') return 'Types';
+            if (this.typeOfPage == 'most_recent') return 'Progetti';
+            if (this.typeOfPage == 'by_type') return this.type ? 'Projects of' + ' ' + this.type.label : 'Types';
             return 'Lista Progetti';
         },
 
         baseEndpoint() {
-            if (this.type == 'most_recent') return 'http://127.0.0.1:8002/api/projects';
-            if (this.type == 'by_type') return `http://127.0.0.1:8000/api/type/${this.$route.params.type_id}/projects`;
-            return 'http://127.0.0.1:8002/api/projects';
-        }
+            if (this.typeOfPage == "most_recent")
+                return "http://127.0.0.1:8002/api/projects";
+            if (this.typeOfPage == "by_type")
+                return `http://127.0.0.1:8002/api/type/${this.$route.params.type_id}/projects`;
+            return "http://127.0.0.1:8002/api/projects";
+        },
 
-    }
+    },
+    created() {
+        this.fetchProjects();
+    },
 };
 </script>
 

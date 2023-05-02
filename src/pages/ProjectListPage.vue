@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-    <ProjectList type="most_recent"></ProjectList>
+    <ProjectList typeOfPage="most_recent"></ProjectList>
 </template>
 
 <style lang="scss" scoped></style>
